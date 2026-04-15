@@ -8,6 +8,7 @@
   packages = [
     pkgs.jdk17
     pkgs.android-tools
+    pkgs.gradle
   ];
 
   # Sets environment variables in the workspace
@@ -24,10 +25,9 @@
     previews = {
       enable = true;
       previews = {
-        web = {
-          # Android doesn't have a web preview usually, but we can set up standard ones if needed.
-          command = [ "./gradlew" ":app:assembleDebug" ];
-          manager = "web";
+        android = {
+          command = [ "./gradlew" ":app:assembleDebug" "-Pandroid.injected.invoked.from.ide=true" ];
+          manager = "android";
         };
       };
     };
