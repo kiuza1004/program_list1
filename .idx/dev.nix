@@ -26,7 +26,7 @@
       enable = true;
       previews = {
         android = {
-          command = [ "./gradlew" ":app:assembleDebug" "-Pandroid.injected.invoked.from.ide=true" ];
+          command = [ "gradle" ":app:assembleDebug" "-Pandroid.injected.invoked.from.ide=true" ];
           manager = "android";
         };
       };
@@ -36,13 +36,13 @@
     workspace = {
       # Runs when a workspace is first created
       onCreate = {
-        # example: npm install
-        # ./gradlew tasks
+        # Generate gradle wrapper
+        setup-wrapper = "gradle wrapper";
       };
       # Runs when a workspace is (re)started
       onStart = {
-        # example: npm start
       };
     };
+
   };
 }
